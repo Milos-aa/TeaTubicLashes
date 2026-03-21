@@ -1,30 +1,53 @@
-window.addEventListener("load", function () {
-    window.setTimeout(function () {
-        document.body.classList.remove("is-preload");
+window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.body.classList.remove("is-preload");
+      document.body.classList.add("hero-animate");
     }, 100);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
+  });
+  
+  document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".reveal-section");
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    const bg = document.querySelector(".page-bg");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
             }
-        });
-    }, {
-        threshold: 0.14
-    });
-
-    sections.forEach(section => observer.observe(section));
-
-    const bg = document.querySelector("#wrapper > .bg");
-
-    window.addEventListener("scroll", function () {
-        const y = window.scrollY * 0.18;
-        if (bg) {
-            bg.style.transform = `translate3d(0, ${y}px, 0)`;
+          });
+        },
+        {
+          threshold: 0.14,
         }
-    }, { passive: true });
-});
+      );
+  
+      sections.forEach((section) => observer.observe(section));
+    } else {
+      sections.forEach((section) => section.classList.add("is-visible"));
+    }
+  
+    if (!reduceMotion && bg) {
+      let ticking = false;
+  
+      const updateParallax = () => {
+        const y = window.scrollY * 0.14;
+        bg.style.transform = `translate3d(0, ${y}px, 0)`;
+        ticking = false;
+      };
+  
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+    }
+  });
