@@ -272,9 +272,9 @@ a {
 }
 
 .prose p {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.15rem; /* bilo je 1.25rem */
   font-size: clamp(1.12rem, 1.6vw, 1.32rem);
-  line-height: 1.78;
+  line-height: 1.65 /* bilo je 1.78 */
   color: var(--text-main);
 }
 
@@ -931,24 +931,23 @@ a {
 
 .service-list {
   display: grid;
-  gap: 1.5rem;
+  gap: 0.20rem; /* bilo je 1.5rem */
 }
 
 .service-card {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 2rem;
+  gap: 1.5rem; /* bilo je 2rem */
   align-items: center;
-  padding: 1.65rem;
+  padding: 1.2rem; /* bilo je 1.65rem */
   background: var(--card-strong);
-  border: 1px solid rgba(111, 88, 72, 0.08);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition),
-    border-color var(--transition);
-  transition-timing-function: var(--ease-luxury);
+  border: 1px solid rgba(111, 88, 72, 0.06);
+  border-radius: 14px; /* bilo je var(--radius-md) = 18px */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.035);
+}
+
+.service-card.reverse {
+  grid-template-columns: 0.95fr 1.05fr;
 }
 
 .service-card:hover {
