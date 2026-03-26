@@ -59,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // active nav
   const sections = document.querySelectorAll("main section[id]");
   const navLinks = document.querySelectorAll(".site-nav a");
+  const siteHeader = document.querySelector(".site-header");
+  let headerTicking = false;
 
   const setActiveNav = () => {
     let currentId = "";
@@ -71,13 +73,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     navLinks.forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("href") === `#${currentId}`);
+      const isActive = link.getAttribute("href") === `#${currentId}`;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
     });
   };
 
-  window.addEventListener("scroll", setActiveNav, { passive: true });
-  window.addEventListener("load", setActiveNav);
-  setActiveNav();
+  const syncHeaderState = () => {
+    if (siteHeader) {
+      siteHeader.classList.toggle("is-condensed", window.scrollY > 36);
+    }
+
+    setActiveNav();
+    headerTicking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!headerTicking) {
+        requestAnimationFrame(syncHeaderState);
+        headerTicking = true;
+      }
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("load", syncHeaderState);
+  syncHeaderState();
 
   // stacked cert carousel
   const carousel = document.getElementById("certsCarousel");
