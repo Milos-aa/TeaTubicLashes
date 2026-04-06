@@ -91,7 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
         navAbout: "About",
         navJourney: "Journey",
         navSkills: "Skills & Certs",
-        navServices: "Services",
+        navServices: "Services & Reviews",
+        navReviews: "Recenzije",
         navContact: "Contact & Book",
         heroKicker: "My name is",
         heroBtnSecondary: "View Services",
@@ -126,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cert5Title: "High Definition Brows",
         cert5Country: "Norway",
         skillsEyebrow: "My Skills",
-        skillsTitle: "What I work with",
+        skillsTitle: "My skills",
         skill1: "Classic Lash Extensions (1:1)",
         skill2: "Light Volume (2D–5D)",
         skill3: "Volume (5D–8D)",
@@ -166,6 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
           "Brow shaping and lamination that frames the face beautifully and completes the overall look with softness and structure.",
         experienceEyebrow: "Experience",
         experienceTitle: "Many happy customers served with professionalism and care",
+        reviewsTitle: "Client Reviews",
+        reviewPrev: "Previous review",
+        reviewNext: "Next review",
         contactEyebrow: "Contact",
         contactTitle: "Let’s connect",
         contactText:
@@ -201,9 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
         skipLink: "Preskoči na sadržaj",
         navHome: "Početna",
         navAbout: "O meni",
-        navJourney: "Put",
+        navJourney: "Moja priča",
         navSkills: "Veštine i sertifikati",
-        navServices: "Usluge",
+        navServices: "Services & Reviews",
+        navReviews: "Recenzije",
         navContact: "Kontakt i rezervacija",
         heroKicker: "Moje ime je",
         heroBtnSecondary: "Pogledaj usluge",
@@ -211,10 +216,10 @@ document.addEventListener("DOMContentLoaded", () => {
         aboutIm: "Ja sam",
         aboutRole1: "certifikovana",
         aboutRole2: "lash i brow",
-        aboutRole3: "artistkinja",
+        aboutRole3: "umetnica",
         aboutDesc1: "posvećena lepoti",
-        aboutDesc2: "i stalnom usavršavanju sa strašću",
-        storyEyebrow: "Moj put",
+        aboutDesc2: "i stalnom usavršavanju",
+        storyEyebrow: "Moja priča",
         storyTitle: "Izgrađeno kroz posvećenost, razvoj i ljubav prema ovom zanatu.",
         storyP1:
           "Od trenutka kada sam pohađala svoj prvi lash trening, znala sam da je to put kojim želim da idem — sa strašću, posvećenošću i preciznošću.",
@@ -237,8 +242,8 @@ document.addEventListener("DOMContentLoaded", () => {
         cert4Country: "Norveška",
         cert5Title: "High Definition Brows",
         cert5Country: "Norveška",
-        skillsEyebrow: "Moje veštine",
-        skillsTitle: "Sa čim radim",
+        skillsEyebrow: "",
+        skillsTitle: "Veštine",
         skill1: "Klasične ekstenzije trepavica (1:1)",
         skill2: "Light volume (2D–5D)",
         skill3: "Volume (5D–8D)",
@@ -277,11 +282,14 @@ document.addEventListener("DOMContentLoaded", () => {
         service7Desc:
           "Oblikovanje obrva i laminacija koje prelepo uokviruju lice i upotpunjuju celokupan izgled mekoćom i strukturom.",
         experienceEyebrow: "Iskustvo",
-        experienceTitle: "Mnoge zadovoljne klijentkinje uslužene uz profesionalnost i pažnju",
+        experienceTitle: "Mnogo zadovoljnih klijentkica uslužene saprofesionalnošću i pažnjom",
+        reviewsTitle: "Recenzije",
+        reviewPrev: "Prethodna recenzija",
+        reviewNext: "Sledeća recenzija",
         contactEyebrow: "Kontakt",
-        contactTitle: "Povežimo se",
+        contactTitle: "Kontaktiraj nas i uveri se",
         contactText:
-          "Lash i brow tretmani u Beogradu, kreirani sa pažnjom, preciznošću i fokusom na prirodnu lepotu.",
+          "Tretmani za obrve i trepavice u Beogradu, kreirani sa pažnjom, preciznošću i fokusom na lepotu.",
         contactMessage1:
           "Nudim lash i brow usluge u mirnom, profesionalnom ambijentu u kome su udobnost klijenata, higijena i lep rezultat uvek na prvom mestu.",
         contactMessage2:
@@ -291,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bookWhatsAppAria: "Rezerviši termin putem WhatsApp-a",
         instagramAria: "Otvori Instagram profil Tea Tubić",
         thankYouTitle: "Hvala<br />ti!",
-        thank1: "Rasti",
+        thank1: "Napreduj",
         thank2: "i",
         thank3: "voli",
         thank4: "svaki",
@@ -353,6 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
     applyText('.site-nav a[href="#story"]', t.navJourney);
     applyText('.site-nav a[href="#skills-certs"]', t.navSkills);
     applyText('.site-nav a[href="#services"]', t.navServices);
+    applyText(".site-nav .nav-reviews-link", t.navReviews);
     applyText('.site-nav a[href="#contact"]', t.navContact);
     applyText(".hero-kicker", t.heroKicker);
     applyText(".hero-actions .btn-secondary", t.heroBtnSecondary);
@@ -417,6 +426,9 @@ document.addEventListener("DOMContentLoaded", () => {
     applyText(".service-card:nth-of-type(7) .service-content p", t.service7Desc);
     applyText(".final-splash .eyebrow", t.experienceEyebrow);
     applyText(".final-splash .section-title", t.experienceTitle);
+    applyText("#reviews .section-title", t.reviewsTitle);
+    applyAttr(".review-prev", "aria-label", t.reviewPrev);
+    applyAttr(".review-next", "aria-label", t.reviewNext);
     applyText("#contact .section-heading .eyebrow", t.contactEyebrow);
     applyText("#contact .section-heading .section-title", t.contactTitle);
     applyText(".contact-text", t.contactText);
@@ -639,4 +651,212 @@ document.addEventListener("DOMContentLoaded", () => {
     updateStack();
     startAutoPlay();
   }
+
+
+  // =========================
+  // REVIEWS CAROUSEL
+  // =========================
+  const reviewsCarousel = document.getElementById("reviewsCarousel");
+  const reviewPrevBtn = document.querySelector(".review-prev");
+  const reviewNextBtn = document.querySelector(".review-next");
+
+  if (reviewsCarousel) {
+    const reviewCards = Array.from(reviewsCarousel.querySelectorAll(".review-shot"));
+    let activeReviewIndex = 0;
+    let reviewAutoPlay = null;
+    let reviewLightboxOpen = false;
+    let reviewWheelLock = false;
+
+    const normalizeReviewOffset = (index, active, total) => {
+      let offset = index - active;
+      if (offset > total / 2) offset -= total;
+      if (offset < -total / 2) offset += total;
+      return offset;
+    };
+
+    const clearReviewState = (card) => {
+      card.className = "review-shot";
+    };
+
+    const updateReviewStack = () => {
+      const total = reviewCards.length;
+
+      reviewCards.forEach((card, index) => {
+        clearReviewState(card);
+        const offset = normalizeReviewOffset(index, activeReviewIndex, total);
+
+        if (offset === 0) {
+          card.classList.add("is-active");
+        } else if (offset === -1) {
+          card.classList.add("pos-1-left");
+        } else if (offset === -2) {
+          card.classList.add("pos-2-left");
+        } else if (offset <= -3) {
+          card.classList.add("pos-3-left");
+        } else if (offset === 1) {
+          card.classList.add("pos-1-right");
+        } else if (offset === 2) {
+          card.classList.add("pos-2-right");
+        } else if (offset >= 3) {
+          card.classList.add("pos-3-right");
+        }
+      });
+    };
+
+    const goToReview = (index) => {
+      activeReviewIndex = (index + reviewCards.length) % reviewCards.length;
+      updateReviewStack();
+    };
+
+    const nextReview = () => goToReview(activeReviewIndex + 1);
+    const prevReview = () => goToReview(activeReviewIndex - 1);
+
+    const stopReviewAutoPlay = () => {
+      if (reviewAutoPlay) {
+        clearInterval(reviewAutoPlay);
+        reviewAutoPlay = null;
+      }
+    };
+
+    const startReviewAutoPlay = () => {
+      if (prefersReducedMotion()) return;
+      stopReviewAutoPlay();
+
+      reviewAutoPlay = setInterval(() => {
+        if (!document.hidden && !reviewLightboxOpen) {
+          nextReview();
+        }
+      }, 4200);
+    };
+
+    reviewPrevBtn?.addEventListener("click", () => {
+      stopReviewAutoPlay();
+      prevReview();
+      startReviewAutoPlay();
+    });
+
+    reviewNextBtn?.addEventListener("click", () => {
+      stopReviewAutoPlay();
+      nextReview();
+      startReviewAutoPlay();
+    });
+
+    const reviewLightbox = document.createElement("div");
+    reviewLightbox.className = "review-lightbox";
+    reviewLightbox.innerHTML = `
+      <div class="review-lightbox-backdrop"></div>
+      <div class="review-lightbox-inner">
+        <img class="review-lightbox-image" />
+      </div>
+    `;
+    document.body.appendChild(reviewLightbox);
+
+    const reviewLightboxImage = reviewLightbox.querySelector(".review-lightbox-image");
+
+    const openReviewLightbox = (src) => {
+      reviewLightboxImage.src = src;
+      reviewLightbox.classList.add("is-open");
+      document.body.classList.add("lightbox-open");
+      reviewLightboxOpen = true;
+    };
+
+    const closeReviewLightbox = () => {
+      reviewLightbox.classList.remove("is-open");
+      document.body.classList.remove("lightbox-open");
+      reviewLightboxOpen = false;
+    };
+
+    reviewLightbox.addEventListener("click", closeReviewLightbox);
+
+    reviewCards.forEach((card, index) => {
+      card.addEventListener("click", (e) => {
+        const img = e.target.closest("img");
+
+        if (img && index === activeReviewIndex) {
+          openReviewLightbox(img.src);
+          return;
+        }
+
+        if (index !== activeReviewIndex) {
+          goToReview(index);
+        }
+      });
+    });
+
+    reviewsCarousel.addEventListener(
+      "wheel",
+      (event) => {
+        if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+        event.preventDefault();
+
+        if (reviewWheelLock) return;
+        reviewWheelLock = true;
+
+        stopReviewAutoPlay();
+        if (event.deltaY > 0) nextReview();
+        else prevReview();
+        startReviewAutoPlay();
+
+        setTimeout(() => {
+          reviewWheelLock = false;
+        }, 420);
+      },
+      { passive: false }
+    );
+
+    let reviewTouchStartX = 0;
+    reviewsCarousel.addEventListener(
+      "touchstart",
+      (event) => {
+        reviewTouchStartX = event.changedTouches[0].clientX;
+        stopReviewAutoPlay();
+      },
+      { passive: true }
+    );
+
+    reviewsCarousel.addEventListener(
+      "touchend",
+      (event) => {
+        const deltaX = event.changedTouches[0].clientX - reviewTouchStartX;
+        if (Math.abs(deltaX) > 40) {
+          if (deltaX < 0) nextReview();
+          else prevReview();
+        }
+        startReviewAutoPlay();
+      },
+      { passive: true }
+    );
+
+    reviewsCarousel.addEventListener("mouseenter", stopReviewAutoPlay);
+    reviewsCarousel.addEventListener("mouseleave", startReviewAutoPlay);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopReviewAutoPlay();
+      else startReviewAutoPlay();
+    });
+
+    updateReviewStack();
+    startReviewAutoPlay();
+  }
+  // =========================
+  const navServicesLink = document.querySelector(".site-nav .nav-services-link");
+  const navReviewsLink = document.querySelector(".site-nav .nav-reviews-link");
+  const reviewsAnchor = document.getElementById("reviews");
+
+  const syncServiceReviewTabs = () => {
+    if (!navServicesLink || !navReviewsLink) return;
+
+    const reviewsTop = reviewsAnchor ? reviewsAnchor.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+    const triggerLine = (siteHeader?.offsetHeight || 0) + 80;
+
+    const inReviewsZone = reviewsTop <= triggerLine;
+
+    navServicesLink.classList.toggle("is-tab-active", !inReviewsZone);
+    navReviewsLink.classList.toggle("is-tab-active", inReviewsZone);
+  };
+
+  window.addEventListener("scroll", syncServiceReviewTabs, { passive: true });
+  window.addEventListener("resize", syncServiceReviewTabs);
+  window.addEventListener("load", syncServiceReviewTabs);
+  syncServiceReviewTabs();
+
 });
