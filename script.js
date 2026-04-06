@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navAbout: "O meni",
         navJourney: "Moja priča",
         navSkills: "Veštine i sertifikati",
-        navServices: "Services & Reviews",
+        navServices: "Usluge i recenzije",
         navReviews: "Recenzije",
         navContact: "Kontakt i rezervacija",
         heroKicker: "Moje ime je",
