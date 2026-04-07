@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         service7Desc:
           "Oblikovanje obrva i laminacija koje prelepo uokviruju lice i upotpunjuju celokupan izgled mekoćom i strukturom.",
         experienceEyebrow: "Iskustvo",
-        experienceTitle: "Mnogo zadovoljnih klijentkica uslužene saprofesionalnošću i pažnjom",
+        experienceTitle: "Mnogo zadovoljnih klijentica uslužene sa profesionalnošću i pažnjom",
         reviewsTitle: "Recenzije",
         reviewPrev: "Prethodna recenzija",
         reviewNext: "Sledeća recenzija",
